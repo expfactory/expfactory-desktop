@@ -1,0 +1,21 @@
+{
+  "name": "expfactory",
+  "version": "1.0.0",
+  "description": "The Experiment Factory Desktop application",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "/usr/bin/nw"
+  },
+  "author": "Vanessa Sochat",
+  "window": {
+    "toolbar": true,
+    "width": 1200,
+    "height": 800
+  },
+  "license": "MIT",
+  "dependencies": {
+    "nw": "^0.15.1",
+    "pretty-bytes": "^1.0.2"
+  }
+}
