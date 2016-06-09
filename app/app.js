@@ -21,12 +21,16 @@ console.log('The author of this app is:', appDir.read('package.json', 'json').au
 
 document.addEventListener('DOMContentLoaded', function () {
 
-    // Event listener for selecting file
-    document.getElementById('select_credentials').addEventListener('click',function(){
-        document.getElementById('select_credentials_input').click(function() {
-            document.getElementById("select_credentials_input").value = "hello!"
-            console.log('after click');
-        });
+    // Event listeners for selecting file
+    document.getElementById('select_credentials_input').addEventListener('click',function(e) {
+      console.log(document.getElementById("select_credentials_input"))
+      console.log('after click');
     },false);
+
+    document.getElementById('select_credentials').addEventListener('click',function(){
+        document.getElementById('select_credentials_input').click();
+    },false);
+
+
 
 });
