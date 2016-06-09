@@ -22,3 +22,11 @@ export var devMenuTemplate = {
         }
     }]
 };
+
+export var rightClickMenu = {
+
+       label: 'Inspect Element',
+       click: function() {
+           BrowserWindow.inspectElement(rightClickPosition.x, rightClickPosition.y)
+       }
+};

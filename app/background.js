@@ -3,8 +3,8 @@
 // It doesn't have any windows which you can see on screen, but we can open
 // window from here.
 
-import { app, Menu } from 'electron';
-import { devMenuTemplate } from './helpers/dev_menu_template';
+import { app, Menu, remote, BrowserWindow } from 'electron';
+import { devMenuTemplate, rightClickMenu } from './helpers/dev_menu_template';
 import { editMenuTemplate } from './helpers/edit_menu_template';
 import createWindow from './helpers/window';
 
@@ -16,14 +16,15 @@ var mainWindow;
 
 var setApplicationMenu = function () {
     var menus = [editMenuTemplate];
+    // Development functions
     if (env.name !== 'production') {
         menus.push(devMenuTemplate);
+        menus.push(rightClickMenu);
     }
     Menu.setApplicationMenu(Menu.buildFromTemplate(menus));
 };
 
 app.on('ready', function () {
-    setApplicationMenu();
 
     var mainWindow = createWindow('main', {
         width: 1200,

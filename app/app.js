@@ -3,14 +3,16 @@
 
 // Use new ES6 modules syntax for everything.
 import os from 'os'; // native node.js module
-import { remote } from 'electron'; // native electron module
+import { Menu, remote } from 'electron'; // native electron module
 import jetpack from 'fs-jetpack'; // module loaded from npm
-import { greet, bye } from './hello_world/hello_world'; // code authored by you in this project
+import { readFile } from './utils/fileio';
 import env from './env';
+
+var app = remote.app;
 
 console.log('Loaded environment variables:', env);
 
-var app = remote.app;
+
 var appDir = jetpack.cwd(app.getAppPath());
 
 // Holy crap! This is browser window with HTML and stuff, but I can read
@@ -18,7 +20,13 @@ var appDir = jetpack.cwd(app.getAppPath());
 console.log('The author of this app is:', appDir.read('package.json', 'json').author);
 
 document.addEventListener('DOMContentLoaded', function () {
-    document.getElementById('greet').innerHTML = greet();
-    document.getElementById('platform-info').innerHTML = os.platform();
-    document.getElementById('env-name').innerHTML = env.name;
+
+    // Event listener for selecting file
+    document.getElementById('select_credentials').addEventListener('click',function(){
+        document.getElementById('select_credentials_input').click(function() {
+            document.getElementById("select_credentials_input").value = "hello!"
+            console.log('after click');
+        });
+    },false);
+
 });

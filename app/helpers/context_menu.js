@@ -56,4 +56,16 @@
         }
     }, false);
 
+
+    // Right click to inspect
+    // Haven't totally figured this out - where should menu come from?
+    // http://stackoverflow.com/questions/32636750/how-to-add-a-right-click-menu-in-electron-that-has-inspect-element-option-like
+    let rightClickPosition = null;
+
+    window.addEventListener('contextmenu', function(e) {
+        e.preventDefault()
+        rightClickPosition = {x: e.x, y: e.y}
+        normalMenu.popup(remote.getCurrentWindow())
+    }, false)
+
 }());
